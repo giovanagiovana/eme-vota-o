@@ -49,6 +49,7 @@
             border-radius: 20px;
             overflow: hidden;
             border: 4px solid #fff;
+            background-color: #f0f0f0;
         }
 
         img {
@@ -107,7 +108,7 @@
             <div class="coracao-animado" style="left:80%; animation-delay: 1s;">💖</div>
             <div class="moldura"><img src="image_14b624.jpg"></div>
             <h2>Gui</h2>
-            <button onclick="votar('gui')">Votar nele</button>
+            <button onclick="votar('gui')">Votar no Gui</button>
             <span id="votos-gui" class="contador">0 Votos</span>
         </div>
 
@@ -116,7 +117,7 @@
             <div class="coracao-animado" style="left:75%; animation-delay: 1.5s;">💖</div>
             <div class="moldura"><img src="image_14b61c.jpg"></div>
             <h2>Davi</h2>
-            <button onclick="votar('davi')">Votar nele</button>
+            <button onclick="votar('davi')">Votar no Davi</button>
             <span id="votos-davi" class="contador">0 Votos</span>
         </div>
 
@@ -126,14 +127,14 @@
             <div class="moldura">
                 <img src="eme.jpg">
             </div>
-            <h2>Opção C</h2>
-            <button onclick="votar('opçãoC')">Votar nesta</button>
-            <span id="votos-opçãoC" class="contador">0 Votos</span>
+            <h2>Manu</h2>
+            <button onclick="votar('manu')">Votar na Manu</button>
+            <span id="votos-manu" class="contador">0 Votos</span>
         </div>
     </div>
 
     <script>
-        let g = 0, d = 0, c = 0;
+        let g = 0, d = 0, m = 0;
         function votar(nome) {
             if(nome === 'gui') {
                 g++;
@@ -141,9 +142,9 @@
             } else if(nome === 'davi') {
                 d++;
                 document.getElementById('votos-davi').innerText = d + " Votos";
-            } else {
-                c++;
-                document.getElementById('votos-opçãoC').innerText = c + " Votos";
+            } else if(nome === 'manu') {
+                m++;
+                document.getElementById('votos-manu').innerText = m + " Votos";
             }
         }
     </script>
