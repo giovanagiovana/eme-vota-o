@@ -11,7 +11,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
             color: white;
-            padding: 20px 20px 80px 20px; /* Espaço extra embaixo para a marca d'água */
+            padding: 20px;
             overflow-x: hidden;
         }
 
@@ -35,7 +35,7 @@
             color: #333;
             padding: 15px;
             border-radius: 30px;
-            width: 260px;
+            width: 280px;
             position: relative;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             margin-bottom: 20px;
@@ -45,7 +45,7 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            height: 320px;
+            height: 350px;
             border-radius: 20px;
             overflow: hidden;
             border: 4px solid #fff;
@@ -96,18 +96,6 @@
             font-weight: bold;
             color: #db2777;
         }
-
-        /* Marca d'água */
-        .marca-dagua {
-            position: fixed;
-            bottom: 15px;
-            right: 20px;
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-            z-index: 100;
-        }
     </style>
 </head>
 <body>
@@ -117,6 +105,7 @@
     <div class="votação">
         <div class="opção">
             <div class="coracao-animado" style="left:10%; animation-delay: 0s;">❤️</div>
+            <div class="coracao-animado" style="left:80%; animation-delay: 1s;">💖</div>
             <div class="moldura"><img src="image_14b624.jpg"></div>
             <h2>Gui</h2>
             <button onclick="votar('gui')">Votar no Gui</button>
@@ -124,7 +113,8 @@
         </div>
 
         <div class="opção">
-            <div class="coracao-animado" style="left:15%; animation-delay: 0.5s;">💖</div>
+            <div class="coracao-animado" style="left:15%; animation-delay: 0.5s;">❤️</div>
+            <div class="coracao-animado" style="left:75%; animation-delay: 1.5s;">💖</div>
             <div class="moldura"><img src="image_14b61c.jpg"></div>
             <h2>Davi</h2>
             <button onclick="votar('davi')">Votar no Davi</button>
@@ -132,54 +122,39 @@
         </div>
 
         <div class="opção">
-            <div class="coracao-animado" style="left:20%; animation-delay: 0.8s;">💗</div>
+            <div class="coracao-animado" style="left:20%; animation-delay: 0.8s;">❤️</div>
+            <div class="coracao-animado" style="left:70%; animation-delay: 1.8s;">💖</div>
             <div class="moldura"><img src="eme.jpg"></div>
             <h2>Manu</h2>
             <button onclick="votar('manu')">Votar na Manu</button>
             <span id="votos-manu" class="contador">0 Votos</span>
         </div>
-
-        <div class="opção">
-            <div class="coracao-animado" style="left:25%; animation-delay: 1.2s;">❤️</div>
-            <div class="moldura"><img src="frajola.jpg"></div>
-            <h2>Frajola</h2>
-            <button onclick="votar('frajola')">Votar no Frajola</button>
-            <span id="votos-frajola" class="contador">0 Votos</span>
-        </div>
     </div>
 
-    <div class="marca-dagua">Criado por Giovana ✨</div>
-
     <script>
-        // Inicializa os votos salvos ou zero
+        // Carrega os votos salvos ou começa do zero se for a primeira vez
         let g = parseInt(localStorage.getItem('votosGui')) || 0;
         let d = parseInt(localStorage.getItem('votosDavi')) || 0;
         let m = parseInt(localStorage.getItem('votosManu')) || 0;
-        let f = parseInt(localStorage.getItem('votosFrajola')) || 0;
 
-        // Exibe os votos salvos ao carregar
+        // Atualiza a tela com os valores salvos assim que a página abre
         document.getElementById('votos-gui').innerText = g + " Votos";
         document.getElementById('votos-davi').innerText = d + " Votos";
         document.getElementById('votos-manu').innerText = m + " Votos";
-        document.getElementById('votos-frajola').innerText = f + " Votos";
 
         function votar(nome) {
             if(nome === 'gui') {
                 g++;
-                localStorage.setItem('votosGui', g);
+                localStorage.setItem('votosGui', g); // Salva no navegador
                 document.getElementById('votos-gui').innerText = g + " Votos";
             } else if(nome === 'davi') {
                 d++;
-                localStorage.setItem('votosDavi', d);
+                localStorage.setItem('votosDavi', d); // Salva no navegador
                 document.getElementById('votos-davi').innerText = d + " Votos";
             } else if(nome === 'manu') {
                 m++;
-                localStorage.setItem('votosManu', m);
+                localStorage.setItem('votosManu', m); // Salva no navegador
                 document.getElementById('votos-manu').innerText = m + " Votos";
-            } else if(nome === 'frajola') {
-                f++;
-                localStorage.setItem('votosFrajola', f);
-                document.getElementById('votos-frajola').innerText = f + " Votos";
             }
         }
     </script>
