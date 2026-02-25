@@ -95,3 +95,93 @@
             font-size: 1.3rem;
             font-weight: bold;
             color: #db2777;
+        }
+
+        /* Marca d'água */
+        .marca-dagua {
+            position: fixed;
+            bottom: 15px;
+            right: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Com quem a Eme deve ficar?</h1>
+    
+    <div class="votação">
+        <div class="opção">
+            <div class="coracao-animado" style="left:10%; animation-delay: 0s;">❤️</div>
+            <div class="moldura"><img src="image_14b624.jpg"></div>
+            <h2>Gui</h2>
+            <button onclick="votar('gui')">Votar no Gui</button>
+            <span id="votos-gui" class="contador">0 Votos</span>
+        </div>
+
+        <div class="opção">
+            <div class="coracao-animado" style="left:15%; animation-delay: 0.5s;">💖</div>
+            <div class="moldura"><img src="image_14b61c.jpg"></div>
+            <h2>Davi</h2>
+            <button onclick="votar('davi')">Votar no Davi</button>
+            <span id="votos-davi" class="contador">0 Votos</span>
+        </div>
+
+        <div class="opção">
+            <div class="coracao-animado" style="left:20%; animation-delay: 0.8s;">💗</div>
+            <div class="moldura"><img src="eme.jpg"></div>
+            <h2>Manu</h2>
+            <button onclick="votar('manu')">Votar na Manu</button>
+            <span id="votos-manu" class="contador">0 Votos</span>
+        </div>
+
+        <div class="opção">
+            <div class="coracao-animado" style="left:25%; animation-delay: 1.2s;">❤️</div>
+            <div class="moldura"><img src="frajola.jpg"></div>
+            <h2>Frajola</h2>
+            <button onclick="votar('frajola')">Votar no Frajola</button>
+            <span id="votos-frajola" class="contador">0 Votos</span>
+        </div>
+    </div>
+
+    <div class="marca-dagua">Criado por Giovana ✨</div>
+
+    <script>
+        // Inicializa os votos salvos ou zero
+        let g = parseInt(localStorage.getItem('votosGui')) || 0;
+        let d = parseInt(localStorage.getItem('votosDavi')) || 0;
+        let m = parseInt(localStorage.getItem('votosManu')) || 0;
+        let f = parseInt(localStorage.getItem('votosFrajola')) || 0;
+
+        // Exibe os votos salvos ao carregar
+        document.getElementById('votos-gui').innerText = g + " Votos";
+        document.getElementById('votos-davi').innerText = d + " Votos";
+        document.getElementById('votos-manu').innerText = m + " Votos";
+        document.getElementById('votos-frajola').innerText = f + " Votos";
+
+        function votar(nome) {
+            if(nome === 'gui') {
+                g++;
+                localStorage.setItem('votosGui', g);
+                document.getElementById('votos-gui').innerText = g + " Votos";
+            } else if(nome === 'davi') {
+                d++;
+                localStorage.setItem('votosDavi', d);
+                document.getElementById('votos-davi').innerText = d + " Votos";
+            } else if(nome === 'manu') {
+                m++;
+                localStorage.setItem('votosManu', m);
+                document.getElementById('votos-manu').innerText = m + " Votos";
+            } else if(nome === 'frajola') {
+                f++;
+                localStorage.setItem('votosFrajola', f);
+                document.getElementById('votos-frajola').innerText = f + " Votos";
+            }
+        }
+    </script>
+</body>
+</html>
