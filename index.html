@@ -124,9 +124,7 @@
         <div class="opção">
             <div class="coracao-animado" style="left:20%; animation-delay: 0.8s;">❤️</div>
             <div class="coracao-animado" style="left:70%; animation-delay: 1.8s;">💖</div>
-            <div class="moldura">
-                <img src="eme.jpg">
-            </div>
+            <div class="moldura"><img src="eme.jpg"></div>
             <h2>Manu</h2>
             <button onclick="votar('manu')">Votar na Manu</button>
             <span id="votos-manu" class="contador">0 Votos</span>
@@ -134,16 +132,28 @@
     </div>
 
     <script>
-        let g = 0, d = 0, m = 0;
+        // Carrega os votos salvos ou começa do zero se for a primeira vez
+        let g = parseInt(localStorage.getItem('votosGui')) || 0;
+        let d = parseInt(localStorage.getItem('votosDavi')) || 0;
+        let m = parseInt(localStorage.getItem('votosManu')) || 0;
+
+        // Atualiza a tela com os valores salvos assim que a página abre
+        document.getElementById('votos-gui').innerText = g + " Votos";
+        document.getElementById('votos-davi').innerText = d + " Votos";
+        document.getElementById('votos-manu').innerText = m + " Votos";
+
         function votar(nome) {
             if(nome === 'gui') {
                 g++;
+                localStorage.setItem('votosGui', g); // Salva no navegador
                 document.getElementById('votos-gui').innerText = g + " Votos";
             } else if(nome === 'davi') {
                 d++;
+                localStorage.setItem('votosDavi', d); // Salva no navegador
                 document.getElementById('votos-davi').innerText = d + " Votos";
             } else if(nome === 'manu') {
                 m++;
+                localStorage.setItem('votosManu', m); // Salva no navegador
                 document.getElementById('votos-manu').innerText = m + " Votos";
             }
         }
